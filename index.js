@@ -2,7 +2,7 @@ import express from 'express';
 
 const app = express();
 app.use(express.json());
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 let registeredUsers = [];
 
@@ -16,6 +16,10 @@ const constantUsers = [
 const constantRoles = [
     "admin", "programmer", "developer", "Analyst"
 ];
+
+app.get('/', (req, res) => {
+    res.send("Express REST API is running");
+});
 
 app.post('/register', (req, res) => {
     //user enter
